@@ -16,13 +16,11 @@ export default function createIteratorObject(report) {
             done: false,
           };
         } else {
-          // Move to the next department
           departmentIndex++;
           employeeIndex = 0;
-          return this.next(); // Recursively call next for the next department
+          return this.next();
         }
       } else {
-        // No more departments or employees
         return {
           done: true,
         };

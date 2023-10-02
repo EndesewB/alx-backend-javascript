@@ -1,13 +1,19 @@
-function updateStudentGradeByCity(students, city, newGrades) {
-  return students
-    .filter((student) => student.location === city)
-    .map(student) => {
-      const matchingGrade = newGrades.find((gradeObj) => gradeObj.studentId === student.id);
-      return {
-        ...student,
-        grade: matchingGrade ? matchingGrade.grade : 'N/A'
-      };
+export default function updateStudentGradeByCity(list, city, newGrade) {
+  return list
+    .filter((obj) => obj.location === city)
+    .map((student) => {
+      newGrade.map((studentGrade) => {
+        if (studentGrade.studentId === student.id) {
+          // eslint-disable-next-line no-param-reassign
+          student.grade = studentGrade.grade;
+        }
+
+        if (!student.hasOwnProperty('grade')) {
+          student.grade = 'N/A';
+        }
+        return student;
+      });
+
+      return student;
     });
 }
-
-export default updateStudentGradeByCity;

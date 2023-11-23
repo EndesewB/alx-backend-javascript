@@ -1,10 +1,21 @@
 const Utils = {
-  calculateNumber: (type, a, b) => {
-    if (type === 'SUM') {
-      return a + b;
+    calculateNumber(type, a, b) {
+    const firstInt = Math.round(a);
+    const secondInt = Math.round(b);
+
+    if (type === 'SUBTRACT') {
+        return firstInt - secondInt;
     }
-    // Handle other types if needed
-  },
+
+    if (type === 'DIVIDE') {
+        if (secondInt === 0) {
+        return 'Error';
+        }
+        return firstInt / secondInt;
+    }
+
+    return firstInt + secondInt;
+    }
 };
 
 module.exports = Utils;
